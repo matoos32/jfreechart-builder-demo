@@ -42,6 +42,7 @@ import javax.swing.JRadioButtonMenuItem;
 
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.ui.TextAnchor;
 
 import com.jfcbuilder.builders.ChartBuilder;
 import com.jfcbuilder.builders.LineBuilder;
@@ -49,7 +50,9 @@ import com.jfcbuilder.builders.OhlcPlotBuilder;
 import com.jfcbuilder.builders.OhlcSeriesBuilder;
 import com.jfcbuilder.builders.VolumeXYPlotBuilder;
 import com.jfcbuilder.builders.VolumeXYTimeSeriesBuilder;
+import com.jfcbuilder.builders.XYArrowBuilder;
 import com.jfcbuilder.builders.XYPlotBuilder;
+import com.jfcbuilder.builders.XYTextBuilder;
 import com.jfcbuilder.builders.XYTimeSeriesBuilder;
 import com.jfcbuilder.builders.types.BuilderConstants;
 import com.jfcbuilder.builders.types.DohlcvSeries;
@@ -73,7 +76,7 @@ public class JFreeChartBuilderDemo {
 
   private static final Stroke SOLID_LINE = BuilderConstants.SOLID_LINE;
   
-  private static final Color DARK_GREEN = new Color(0, 150, 0);
+  private static final Color DARK_GREEN = new Color(0, 100, 0);
   
   public static void main(String[] args) {
 
@@ -143,13 +146,27 @@ public class JFreeChartBuilderDemo {
     
     List<JFreeChart> charts = new ArrayList<>();
     
+    final int arrowIndex = (int) (0.75 * sinusoidDays.length);
+    final double arrowX = (double) sinusoidDays[arrowIndex];
+    final double arrowY = sinDaily1[arrowIndex];
+    final String arrowTxt = String.format("%.1f", arrowY);
+    
+    final int stockEventIndex = dohlcv.dates().length - 10;
+    final long stockEventDate = dohlcv.dates()[stockEventIndex];
+    final double stockEventPrice = dohlcv.highs()[stockEventIndex];
+    final double stockEventVolume = dohlcv.volumes()[stockEventIndex];
+    
     charts.add(
       ChartBuilder.instance()
-        .title("Simple Daily Time Series")
+        .title("Simple Time Series With Annotations")
         .timeData(sinusoidDays)
         .indexRange(sinusoidDailyStartIndex, sinusoidDailyEndIndex)
         .xyPlot(XYPlotBuilder.instance()
-          .series(XYTimeSeriesBuilder.instance().name("Amplitude").data(sinDaily1).color(Color.BLUE).style(SOLID_LINE)))
+          .series(XYTimeSeriesBuilder.instance().name("Amplitude").data(sinDaily1).color(Color.BLUE).style(SOLID_LINE))
+          .annotation(XYArrowBuilder.instance().x(arrowX).y(arrowY).angle(180.0).color(Color.RED).text(arrowTxt))
+          .annotation(XYArrowBuilder.instance().x(arrowX).y(arrowY).angle(0.0).color(Color.RED))
+          .annotation(XYTextBuilder.instance().x(arrowX).y(arrowY).color(DARK_GREEN)
+            .text("This value!").textPaddingLeft(5).textAlign(TextAnchor.BASELINE_LEFT).angle(90.0)))
         .build()
       );
     
@@ -171,42 +188,64 @@ public class JFreeChartBuilderDemo {
         .title("Multi Plot Minute Time Series")
         .timeData(sinusoidMinutes)
         .indexRange(sinusoidMinuteStartIndex, sinusoidMinuteEndIndex)
+        
         .xyPlot(XYPlotBuilder.instance().yAxisName("Values")
           .series(XYTimeSeriesBuilder.instance().data(sinMinute1).color(Color.BLUE).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.instance().data(sinMinute2).color(Color.RED).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.instance().data(sinMinute3).color(DARK_GREEN).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.instance().data(sinMinute4).color(Color.MAGENTA).style(SOLID_LINE)))
+        
         .xyPlot(XYPlotBuilder.instance().yAxisName("Amplitudes")
           .series(XYTimeSeriesBuilder.instance().data(sinMinute2).color(Color.GRAY).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.instance().data(sinMinute3).color(Color.LIGHT_GRAY).style(SOLID_LINE)))
+        
         .xyPlot(XYPlotBuilder.instance().yAxisName("Series 1")
             .series(XYTimeSeriesBuilder.instance().data(sinMinute1).color(Color.BLUE).style(SOLID_LINE)))
+        
         .xyPlot(XYPlotBuilder.instance().yAxisName("Series 2")
             .series(XYTimeSeriesBuilder.instance().data(sinMinute2).color(Color.RED).style(SOLID_LINE)))
+        
         .xyPlot(XYPlotBuilder.instance().yAxisName("Series 3")
             .series(XYTimeSeriesBuilder.instance().data(sinMinute3).color(DARK_GREEN).style(SOLID_LINE)))
+        
         .build()
       );
     
     charts.add(
       ChartBuilder.instance()
   
-        .title("Stock Chart Time Series With Weekend Gaps")
+        .title("Stock Chart Time Series With Weekend Gaps, Lines, and Annotations")
         .timeData(dohlcv.dates())
         .indexRange(ohlcStartIndex, ohlcEndIndex)
     
         .xyPlot(OhlcPlotBuilder.instance().yAxisName("Price").plotWeight(3)
+            
           .series(OhlcSeriesBuilder.instance().ohlcv(dohlcv).upColor(Color.WHITE).downColor(Color.RED))
           .series(XYTimeSeriesBuilder.instance().name("MA(20)").data(sma20).color(Color.MAGENTA).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.instance().name("MA(50)").data(sma50).color(Color.BLUE).style(SOLID_LINE))
-          .series(XYTimeSeriesBuilder.instance().name("MA(200)").data(sma200).color(Color.RED).style(SOLID_LINE)))
+          .series(XYTimeSeriesBuilder.instance().name("MA(200)").data(sma200).color(Color.RED).style(SOLID_LINE))
+          
+          .annotation(XYArrowBuilder.instance().x(stockEventDate).y(stockEventPrice).angle(270.0).color(DARK_GREEN)
+            .textAlign(TextAnchor.BOTTOM_CENTER).text(String.format("%.2f", stockEventPrice)))
+          
+          .line(LineBuilder.instance().orientation(Orientation.HORIZONTAL).atValue(dohlcv.closes()[0])
+            .color(Color.LIGHT_GRAY).style(SOLID_LINE)))
     
+        
         .xyPlot(VolumeXYPlotBuilder.instance().yAxisName("Volume").plotWeight(1)
           .series(VolumeXYTimeSeriesBuilder.instance().ohlcv(dohlcv).closeUpSeries().color(Color.WHITE))
           .series(VolumeXYTimeSeriesBuilder.instance().ohlcv(dohlcv).closeDownSeries().color(Color.RED))
-          .series(XYTimeSeriesBuilder.instance().name("MA(90)").data(volSma90).color(Color.BLUE).style(SOLID_LINE)))
+          .series(XYTimeSeriesBuilder.instance().name("MA(90)").data(volSma90).color(Color.BLUE).style(SOLID_LINE))
+          
+          .annotation(XYArrowBuilder.instance().x(stockEventDate).y(stockEventVolume).angle(270.0).color(DARK_GREEN)
+            .textAlign(TextAnchor.BOTTOM_CENTER).text(String.format("%.0f", stockEventVolume)))
+          
+          .line(LineBuilder.instance().orientation(Orientation.HORIZONTAL).atValue(dohlcv.volumes()[0])
+            .color(DARK_GREEN).style(SOLID_LINE)))
     
+        
         .xyPlot(XYPlotBuilder.instance().yAxisName("Stoch").yAxisRange(0.0, 100.0).yAxisTickSize(50.0).plotWeight(1)
+            
           .series(XYTimeSeriesBuilder.instance().name("K(" + K + ")").data(stoch.getPctK()).color(Color.RED).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.instance().name("D(" + D + ")").data(stoch.getPctD()).color(Color.BLUE).style(SOLID_LINE))
           .line(LineBuilder.instance().orientation(Orientation.HORIZONTAL).atValue(80.0).color(Color.BLACK).style(SOLID_LINE))
