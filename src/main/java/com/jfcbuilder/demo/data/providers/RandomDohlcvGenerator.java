@@ -51,7 +51,7 @@ public class RandomDohlcvGenerator implements IDohlcvProvider {
    * 
    * @return New instance of this class
    */
-  public static RandomDohlcvGenerator instance() {
+  public static RandomDohlcvGenerator get() {
     return new RandomDohlcvGenerator();
   }
 
