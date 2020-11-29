@@ -15,23 +15,6 @@ A demonstration app for using the [jfreechart-builder](https://github.com/matoos
 ![A stock chart time series chart with weekend gaps](./screenshots/stock-chart-time-series-weekend-gaps.png "App screenshot")
 
 
-## Versioning
-
-Uses the version number matching that of **jfreechart-builder**.
-
-
-## License
-
-This project and source code are provided under the terms of the same [LGPL 2.1 license](./license-LGPL.txt).
-
-You should be aware that, by virtue of the Maven Shade plugin, the app JAR file that is created will contain the compiled `.class` files of:
-
-* The [jfreechart-builder](https://github.com/matoos32/jfreechart-builder) module (LGPL 2.1 license)
-* The [jfreechart](https://github.com/jfree/jfreechart) library (LGPL 2.1 license)
-
-If you need clarification on the LGPL vs. Java, please see the [FSF's tech note about it](https://www.gnu.org/licenses/lgpl-java.html).
-
-
 ## Building Prerequisites
 
 * JDK 8 or greater [[1](https://openjdk.java.net/)] [[2](https://www.oracle.com/java/)] installed.
@@ -64,6 +47,24 @@ The jar will be in the `target/` folder.
 ```
 javaw -jar target/jfreechart-builder-demo-1.5.0.jar
 ```
+
+
+## Versioning
+
+Uses the version number matching that of **jfreechart-builder**.
+
+
+## License
+
+This project and source code are provided under the terms of the same [LGPL 2.1 license](./license-LGPL.txt).
+
+You should be aware that, by virtue of the Maven Shade plugin, the app JAR file that is created will contain the compiled `.class` files of:
+
+* The [jfreechart-builder](https://github.com/matoos32/jfreechart-builder) module (LGPL 2.1 license)
+* The [jfreechart](https://github.com/jfree/jfreechart) library (LGPL 2.1 license)
+
+If you need clarification on the LGPL vs. Java, please see the [FSF's tech note about it](https://www.gnu.org/licenses/lgpl-java.html).
+
 
 ## Contributing
 
