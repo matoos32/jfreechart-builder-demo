@@ -56,7 +56,6 @@ import com.jfcbuilder.builders.XYTextBuilder;
 import com.jfcbuilder.builders.XYTimeSeriesBuilder;
 import com.jfcbuilder.builders.types.BuilderConstants;
 import com.jfcbuilder.builders.types.DohlcvSeries;
-import com.jfcbuilder.builders.types.Orientation;
 import com.jfcbuilder.demo.data.providers.AscendingDateTimeGenerator;
 import com.jfcbuilder.demo.data.providers.IDateTimeSeriesProvider;
 import com.jfcbuilder.demo.data.providers.IDohlcvProvider;
