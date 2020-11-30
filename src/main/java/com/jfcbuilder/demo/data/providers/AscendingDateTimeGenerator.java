@@ -48,7 +48,7 @@ public class AscendingDateTimeGenerator implements IDateTimeSeriesProvider {
    * 
    * @return New instance of this class
    */
-  public static AscendingDateTimeGenerator instance() {
+  public static AscendingDateTimeGenerator get() {
     return new AscendingDateTimeGenerator();
   }
 
