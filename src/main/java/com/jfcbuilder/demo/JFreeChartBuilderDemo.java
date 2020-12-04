@@ -75,7 +75,9 @@ public class JFreeChartBuilderDemo {
 
   private static final Stroke SOLID_LINE = BuilderConstants.SOLID_LINE;
   
+  private static final Color DARK_BLUE = new Color(0, 0, 100);
   private static final Color DARK_GREEN = new Color(0, 100, 0);
+  private static final Color DARK_RED = new Color(100, 0, 0);
   
   public static void main(String[] args) {
 
@@ -187,25 +189,29 @@ public class JFreeChartBuilderDemo {
         .title("Multi Plot Minute Time Series")
         .timeData(sinusoidMinutes)
         .indexRange(sinusoidMinuteStartIndex, sinusoidMinuteEndIndex)
-        
+
         .xyPlot(XYPlotBuilder.get().yAxisName("Values")
-          .series(XYTimeSeriesBuilder.get().data(sinMinute1).color(Color.BLUE).style(SOLID_LINE))
+          .backgroundColor(Color.DARK_GRAY).axisColor(Color.RED).axisFontColor(Color.BLUE).gridLines()
+          .series(XYTimeSeriesBuilder.get().data(sinMinute1).color(Color.YELLOW).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.get().data(sinMinute2).color(Color.RED).style(SOLID_LINE))
-          .series(XYTimeSeriesBuilder.get().data(sinMinute3).color(DARK_GREEN).style(SOLID_LINE))
+          .series(XYTimeSeriesBuilder.get().data(sinMinute3).color(Color.GREEN).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.get().data(sinMinute4).color(Color.MAGENTA).style(SOLID_LINE)))
         
         .xyPlot(XYPlotBuilder.get().yAxisName("Amplitudes")
-          .series(XYTimeSeriesBuilder.get().data(sinMinute2).color(Color.GRAY).style(SOLID_LINE))
+          .series(XYTimeSeriesBuilder.get().data(sinMinute2).color(Color.BLACK).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.get().data(sinMinute3).color(Color.LIGHT_GRAY).style(SOLID_LINE)))
         
         .xyPlot(XYPlotBuilder.get().yAxisName("Series 1")
-            .series(XYTimeSeriesBuilder.get().data(sinMinute1).color(Color.BLUE).style(SOLID_LINE)))
+          .backgroundColor(DARK_GREEN).axisColor(Color.RED).axisFontColor(Color.BLUE).gridLines()
+          .series(XYTimeSeriesBuilder.get().data(sinMinute1).color(Color.GREEN).style(SOLID_LINE)))
         
         .xyPlot(XYPlotBuilder.get().yAxisName("Series 2")
-            .series(XYTimeSeriesBuilder.get().data(sinMinute2).color(Color.RED).style(SOLID_LINE)))
+          .backgroundColor(DARK_RED).axisColor(Color.RED).axisFontColor(Color.BLUE).gridLines()
+          .series(XYTimeSeriesBuilder.get().data(sinMinute2).color(Color.RED).style(SOLID_LINE)))
         
         .xyPlot(XYPlotBuilder.get().yAxisName("Series 3")
-            .series(XYTimeSeriesBuilder.get().data(sinMinute3).color(DARK_GREEN).style(SOLID_LINE)))
+          .backgroundColor(DARK_BLUE).axisColor(Color.RED).axisFontColor(Color.BLUE).gridLines()
+          .series(XYTimeSeriesBuilder.get().data(sinMinute3).color(Color.CYAN).style(SOLID_LINE)))
         
         .build()
       );
@@ -218,7 +224,6 @@ public class JFreeChartBuilderDemo {
         .indexRange(ohlcStartIndex, ohlcEndIndex)
     
         .xyPlot(OhlcPlotBuilder.get().yAxisName("Price").plotWeight(3)
-            
           .series(OhlcSeriesBuilder.get().ohlcv(dohlcv).upColor(Color.WHITE).downColor(Color.RED))
           .series(XYTimeSeriesBuilder.get().name("MA(20)").data(sma20).color(Color.MAGENTA).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.get().name("MA(50)").data(sma50).color(Color.BLUE).style(SOLID_LINE))
@@ -244,7 +249,6 @@ public class JFreeChartBuilderDemo {
     
         
         .xyPlot(XYPlotBuilder.get().yAxisName("Stoch").yAxisRange(0.0, 100.0).yAxisTickSize(50.0).plotWeight(1)
-            
           .series(XYTimeSeriesBuilder.get().name("K(" + K + ")").data(stoch.getPctK()).color(Color.RED).style(SOLID_LINE))
           .series(XYTimeSeriesBuilder.get().name("D(" + D + ")").data(stoch.getPctD()).color(Color.BLUE).style(SOLID_LINE))
           .line(LineBuilder.get().horizontal().at(80.0).color(Color.BLACK).style(SOLID_LINE))

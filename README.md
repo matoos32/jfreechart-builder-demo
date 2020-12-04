@@ -31,7 +31,7 @@ Each time `develop` is merged into `main`, a version tag is added onto that merg
 
 * JDK 8 or greater [[1](https://openjdk.java.net/)] [[2](https://www.oracle.com/java/)] installed.
 * [Apache Maven](https://maven.apache.org/) installed.
-* Internet connection so Maven can download artifacts or you provide and install those into your local Maven repo by alternative means.
+* Internet connection for Maven downloads or you add them to your local Maven repo by other means.
 
 
 ## Installing the source code
