@@ -31,20 +31,20 @@ Each time `develop` is merged into `main`, a version tag is added onto that merg
 
 * JDK 8 or greater [[1](https://openjdk.java.net/)] [[2](https://www.oracle.com/java/)] installed.
 * [Apache Maven](https://maven.apache.org/) installed.
-* Internet connection so Maven can download artifacts or you provide and install those into your local Maven repo by alternative means.
+* Internet connection for Maven downloads or you add them to your local Maven repo by other means.
 
 
 ## Installing the source code
 
 ```
-git clone <repo URL>
+git clone <this repo's URL>
 ```
 
 
 ## Building and installing the JAR
 
 ```
-cd path/to/the/cloned/repo
+cd path/to/cloned/repo
 
 git checkout <desired branch or tag>
 
@@ -57,7 +57,7 @@ The jar will be in the `target/` folder.
 ## Running the app
 
 ```
-javaw -jar target/jfreechart-builder-demo-1.5.0.jar
+javaw -jar target/jfreechart-builder-demo-1.5.2.jar
 ```
 
 
