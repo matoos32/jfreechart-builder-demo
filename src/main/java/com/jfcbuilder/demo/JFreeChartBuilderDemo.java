@@ -54,8 +54,6 @@ import com.jfcbuilder.builders.XYArrowBuilder;
 import com.jfcbuilder.builders.XYPlotBuilder;
 import com.jfcbuilder.builders.XYTextBuilder;
 import com.jfcbuilder.builders.XYTimeSeriesBuilder;
-import com.jfcbuilder.builders.types.BuilderConstants;
-import com.jfcbuilder.builders.types.DohlcvSeries;
 import com.jfcbuilder.demo.data.providers.AscendingDateTimeGenerator;
 import com.jfcbuilder.demo.data.providers.IDateTimeSeriesProvider;
 import com.jfcbuilder.demo.data.providers.IDohlcvProvider;
@@ -64,6 +62,8 @@ import com.jfcbuilder.demo.data.providers.numeric.Sinusoid;
 import com.jfcbuilder.demo.data.providers.numeric.Sma;
 import com.jfcbuilder.demo.data.providers.numeric.StochasticOscillator;
 import com.jfcbuilder.demo.data.providers.numeric.StochasticOscillator.StochData;
+import com.jfcbuilder.types.BuilderConstants;
+import com.jfcbuilder.types.DohlcvSeries;
 
 /**
  * Test class for demonstrating JFreeChartBuilder capabilities. Contains a main application that
@@ -79,6 +79,11 @@ public class JFreeChartBuilderDemo {
   private static final Color DARK_GREEN = new Color(0, 100, 0);
   private static final Color DARK_RED = new Color(100, 0, 0);
   
+  /**
+   * Main entry point to this demonstration application.
+   * 
+   * @param args The command line arguments
+   */
   public static void main(String[] args) {
 
     // Prepare the application data to be plotted ...
@@ -264,8 +269,8 @@ public class JFreeChartBuilderDemo {
   /**
    * Helper method to build a GUI for showcasing the demo charts.
    * 
-   * @param chartMap Map of chart names (keys) to JFreeChart objects (values)
-   * @throws HeadlessException If a problem occurs.
+   * @param charts Container of charts to be demonstrated
+   * @throws HeadlessException If a problem occurs
    */
   protected static void launchChartDemoWindow(List<JFreeChart> charts)
       throws HeadlessException {

@@ -25,9 +25,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.jfcbuilder.builders.types.DohlcvSeries;
 import com.jfcbuilder.demo.data.providers.numeric.Sinusoid;
 import com.jfcbuilder.demo.data.providers.numeric.Sinusoid.SinusoidParams;
+import com.jfcbuilder.types.DohlcvSeries;
 
 /**
  * Provides randomized Date Open High Low Close Volume (DOHLCV) data sets that follow a sinusoidal
