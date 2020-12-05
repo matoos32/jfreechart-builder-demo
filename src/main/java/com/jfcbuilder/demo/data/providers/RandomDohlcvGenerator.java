@@ -37,7 +37,7 @@ public class RandomDohlcvGenerator implements IDohlcvProvider {
 
   private static final double MAX_TRENDLINE_AMPLITUDE = 2.0;
   private static final double MAX_CANDLE_RANGE_PERCENT_CHANGE = 0.10;
-  private static final double MAX_VOLUME = 10_000_000.0;
+  private static final double MAX_VOLUME = 100_000_000.0;
 
   /**
    * Hidden constructor

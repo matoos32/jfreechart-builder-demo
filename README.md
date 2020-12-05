@@ -37,14 +37,14 @@ Each time `develop` is merged into `main`, a version tag is added onto that merg
 ## Installing the source code
 
 ```
-git clone <repo URL>
+git clone <this repo's URL>
 ```
 
 
 ## Building and installing the JAR
 
 ```
-cd path/to/the/cloned/repo
+cd path/to/cloned/repo
 
 git checkout <desired branch or tag>
 
