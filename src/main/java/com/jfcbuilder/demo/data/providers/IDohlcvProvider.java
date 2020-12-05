@@ -20,7 +20,7 @@
 
 package com.jfcbuilder.demo.data.providers;
 
-import com.jfcbuilder.builders.types.DohlcvSeries;
+import com.jfcbuilder.types.DohlcvSeries;
 
 /**
  * Interface for stock market Date Open High Low Close Volume (DOHLCV) data providers.
