@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.jfcbuilder</groupId>
   <artifactId>jfreechart-builder-demo</artifactId>
-  <version>1.5.2</version>
+  <version>1.5.3</version>
   <name>JFreeChartBuilder Demonstration</name>
   <description>A sample application for demonstrating the use of jfreechart-builder</description>
 
@@ -24,7 +24,7 @@
     <dependency>
       <groupId>com.jfcbuilder</groupId>
       <artifactId>jfreechart-builder</artifactId>
-      <version>1.5.2</version>
+      <version>1.5.3</version>
     </dependency>
   </dependencies>
 
