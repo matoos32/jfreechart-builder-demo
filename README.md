@@ -2,9 +2,11 @@
 
 A demonstration app for using the [jfreechart-builder](https://github.com/matoos32/jfreechart-builder) module.
 
+
 ## Demonstrations
 
  The app generates random series then uses ***jfreechart-builder*** to plot them. Click the **Demonstrations** drop-down menu to see various builder results. Verify what you see against the source code to understnad what is happening.
+
 
 ### Samples
 
@@ -13,6 +15,8 @@ A demonstration app for using the [jfreechart-builder](https://github.com/matoos
 ![A multi-plot minute time series chart](./screenshots/multi-plot-minute-time-series.png "App screenshot")
 
 ![A stock chart time series chart with weekend gaps](./screenshots/stock-chart-time-series-weekend-gaps.png "App screenshot")
+
+![A stock chart time series chart with no time gaps](./screenshots/stock-chart-time-series-no-time-gaps.png "App screenshot")
 
 
 ## Versioning
@@ -57,7 +61,7 @@ The jar will be in the `target/` folder.
 ## Running the app
 
 ```
-javaw -jar target/jfreechart-builder-demo-1.5.2.jar
+javaw -jar target/jfreechart-builder-demo-1.5.3.jar
 ```
 
 
