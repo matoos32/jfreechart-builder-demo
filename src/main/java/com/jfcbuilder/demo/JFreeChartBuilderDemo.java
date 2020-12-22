@@ -289,9 +289,10 @@ public class JFreeChartBuilderDemo {
         .textAlign(TextAnchor.BOTTOM_CENTER).text(String.format("%.0f", stockEventVolume)))
       .line(LineBuilder.get().horizontal().at(volumeLine).color(DARK_GREEN).style(SOLID_LINE)))
 
-    .xyPlot(XYTimeSeriesPlotBuilder.get().yAxisName("Stoch").yAxisRange(0.0, 100.0).yAxisTickSize(50.0).gridLines()
-      .series(XYTimeSeriesBuilder.get().name("K(" + K + ")").data(stoch.getPctK()).color(Color.RED).style(SOLID_LINE))
-      .series(XYTimeSeriesBuilder.get().name("D(" + D + ")").data(stoch.getPctD()).color(Color.BLUE).style(SOLID_LINE))
+    .xyPlot(XYTimeSeriesPlotBuilder.get().yAxisRange(0.0, 100.0).yAxisTickSize(50.0).gridLines()
+      .yAxisName("Stochastics(" + K + ", " + D + ")")
+      .series(XYTimeSeriesBuilder.get().data(stoch.getPctK()).color(Color.RED).style(SOLID_LINE))
+      .series(XYTimeSeriesBuilder.get().data(stoch.getPctD()).color(Color.BLUE).style(SOLID_LINE))
       .line(LineBuilder.get().horizontal().at(80.0).color(Color.BLACK).style(SOLID_LINE))
       .line(LineBuilder.get().horizontal().at(50.0).color(Color.BLUE).style(SOLID_LINE))
       .line(LineBuilder.get().horizontal().at(20.0).color(Color.BLACK).style(SOLID_LINE)));
