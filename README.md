@@ -61,7 +61,7 @@ The jar will be in the `target/` folder.
 ## Running the app
 
 ```
-javaw -jar target/jfreechart-builder-demo-1.5.4.jar
+javaw -jar target/jfreechart-builder-demo-1.5.5.jar
 ```
 
 
