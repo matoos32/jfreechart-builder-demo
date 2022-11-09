@@ -1,3 +1,7 @@
+# !!! Deprecation Notice !!!
+**Warning**
+This repo is deprecated as of https://github.com/matoos32/jfreechart-builder/pull/57
+
 # jfreechart-builder-demo
 
 A demonstration app for using the [jfreechart-builder](https://github.com/matoos32/jfreechart-builder) module.
